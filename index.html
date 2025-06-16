@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BuzzBit – 급상승 뉴스 & 커뮤니티</title>
+
+<style>
+/* ───── 디자인 토큰 ───── */
+:root{
+  --bg:#0e0e0e;      /* 페이지 배경 */
+  --card:#1a1a1a;    /* 카드 배경 */
+  --txt:#ffffff;     /* 기본 텍스트 */
+  --txt-sub:#9ea0a4; /* 보조 텍스트 */
+  --accent:#3ea6ff;  /* 링크·포커스 */
+  --pos:#35a0ff;     /* 긍정 */
+  --neu:#9ea0a4;     /* 중립 */
+  --neg:#ff4b4b;     /* 부정 */
+  --radius:12px;
+  --shadow:0 1px 3px rgba(0,0,0,.25);
+}
+
+/* ───── Reset & Base ───── */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:'Pretendard','Noto Sans KR',sans-serif;
+  line-height:1.45;padding:24px
+}
+h1,h2{font-weight:700;word-break:keep-all}
+h1{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:28px}
+h2{font-size:1.25rem;margin:40px 0 16px}
+ul{list-style:none}
+.section{max-width:720px;margin:0 auto}
+
+/* ───── 카드 공통 ───── */
+.card{
+  background:var(--card);border-radius:var(--radius);
+  padding:18px;display:flex;gap:16px;align-items:flex-start;
+  transition:background .25s;box-shadow:var(--shadow)
+}
+.card:hover{background:#222}
+.thumb,.icon{
+  width:72px;height:72px;flex-shrink:0;object-fit:cover;
+  border-radius:9px
+}
+.content{flex:1;min-width:0}
+.headline{
+  font-size:1rem;font-weight:500;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;word-break:keep-all
+}
+.meta{margin-top:6px;font-size:.85rem;color:var(--txt-sub)}
+a.card-link{display:flex;gap:16px;width:100%;text-decoration:none;color:inherit}
+a.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ───── 커뮤니티 배지 ───── */
+.rank{
+  width:28px;height:28px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;font-size:.8rem;
+  font-weight:600;background:#444;margin-right:10px
+}
+.sent{font-weight:600}.pos{color:var(--pos)}.neu{color:var(--neu)}.neg{color:var(--neg)}
+
+/* ───── 커뮤니티 설명 박스 ───── */
+.desc-box{
+  background:var(--card);border-radius:var(--radius);
+  padding:18px;margin-top:20px;box-shadow:var(--shadow);
+  font-size:.9rem;line-height:1.6
+}
+.hashtag{color:var(--accent);margin-right:6px}
+
+/* ───── 데스크톱(≥768px) ───── */
+@media(min-width:768px){
+  body{padding:40px}
+  .thumb,.icon{order:-1;width:84px;height:84px}
+  .headline{font-size:1.05rem}
+}
+</style>
+</head>
+<body>
+
+<div class="section">
+
+<!-- ▲ 뉴스 섹션 -->
+<h1 id="todayHeadline"></h1>
+<ul class="news-list" style="display:grid;row-gap:16px">
+
+  <li class="card">
+    <a class="card-link" href="https://aj-114.github.io/hecto/News_contents.html" >
+      <img class="thumb" src="https://images.unsplash.com/photo-1659292080999-1de5b7a915b3?q=80&w=400&auto=format" alt="">
+      <div class="content">
+        <p class="headline">헥토그룹 '맛깔' 나는 복지 주목..."일할 맛 나네”</p>
+        <p class="meta">1일 전 · 백봉삼</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card">
+    <a class="card-link" href="https://aj-114.github.io/hecto/News_contents2.html" >
+      <img class="thumb" src="https://images.unsplash.com/photo-1608889476561-6242cfdbf622?q=80&w=400&auto=format" alt="">
+      <div class="content">
+        <p class="headline">[시간외 특징주] 시공테크 급등, 한덕수 ‘5월 1일 대선 출마 유력’ 무소속 출마 현실화될까</p>
+        <p class="meta">1일 전 · 황진영</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card">
+    <a class="card-link" href="https://aj-114.github.io/hecto/News_contents3.html" >
+      <img class="thumb" src="https://images.unsplash.com/photo-1674515489647-fd8f76b86f65?q=80&w=400&auto=format" alt="">
+      <div class="content">
+        <p class="headline">[비트코인 속보] 트럼프의 '최악의 100일'… 암호화폐 우호 정책에도 불구하고 혼란만 키웠다</p>
+        <p class="meta">6일 전 · 정용현</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card">
+    <a class="card-link" href="https://aj-114.github.io/hecto/News_contents4.html" >
+      <img class="thumb" src="https://images.unsplash.com/photo-1576666735065-b24beb27b939?q=80&w=400&auto=format" alt="">
+      <div class="content">
+        <p class="headline">[특징주] 오리엔트정공 급등, ‘공직선거법 최종 선고’ 앞두고 이재명 관련주 ‘활활’</p>
+        <p class="meta">7일 전 · 황진영</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card">
+    <a class="card-link" href="https://aj-114.github.io/hecto/News_contents5.html" >
+      <img class="thumb" src="https://images.unsplash.com/photo-1583857671904-a716bf4ee5d8?q=80&w=400&auto=format" alt="">
+      <div class="content">
+        <p class="headline">LX인터내셔널, 1분기 영업이익 1169억…전년보다 5.6%↑</p>
+        <p class="meta">7일 전 · 뉴시스언론보도</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card">
+    <a class="card-link" href="https://aj-114.github.io/hecto/News_contents6.html" >
+      <img class="thumb" src="https://images.unsplash.com/photo-1700847304964-9fe563059742?q=80&w=400&auto=format" alt="">
+      <div class="content">
+        <p class="headline">한화에어로, 1분기 영업익 5608억…"역대 최대 실적 달성"</p>
+        <p class="meta">6일 전 · 뉴시스언론보도</p>
+      </div>
+    </a>
+  </li>
+
+  <li class="card">
+    <a class="card-link" href="https://aj-114.github.io/hecto/News_contents7.html" >
+      <img class="thumb" src="https://images.unsplash.com/photo-1648020265916-7d1d3a183a4c?q=80&w=400&auto=format" alt="">
+      <div class="content">
+        <p class="headline">이재현 CJ 회장, 트럼프 주니어와 회동 "K푸드 등 美 대규모 투자 전략 논의"</p>
+        <p class="meta">2일 전 · 뉴시스언론보도</p>
+      </div>
+    </a>
+  </li>
+</ul>
+
+ <!-- ▼ 커뮤니티 섹션 ------------------------------------------------ -->
+ <h2>관심 급상승 커뮤니티</h2>
+ <p id="commDate" class="meta"></p>
+
+ <ul class="comm-list" style="display:grid;row-gap:12px;margin-top:12px">
+   <li class="card" onclick="show('TSLL')"><div class="rank">1</div><div class="content"><p class="headline">CJ대한통운</p></div><div class="sent neg">부정</div></li>
+   <li class="card" onclick="show('SOXL')"><div class="rank">2</div><div class="content"><p class="headline">삼일제약</p></div><div class="sent pos">긍정</div></li>
+   <li class="card" onclick="show('TSLA')"><div class="rank">3</div><div class="content"><p class="headline">SK하이닉스</p></div><div class="sent neg">부정</div></li>
+   <li class="card" onclick="show('SANGJI')"><div class="rank">4</div><div class="content"><p class="headline">현대건설</p></div><div class="sent pos">긍정</div></li>
+   <li class="card" onclick="show('NVDA')"><div class="rank">5</div><div class="content"><p class="headline">CJ</p></div><div class="sent neg">부정</div></li>
+ </ul>
+
+ <!-- ▼ 설명 + 리포트 박스 ------------------------------------------- -->
+ <div id="descBox" class="desc-box">
+   항목을 터치하면 상세 토론 요약이 표시됩니다.
+ </div>
+
+</div>
+
+<script>
+  // 오늘 날짜 표시
+function renderTodayDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  document.getElementById('todayHeadline').innerHTML =
+    `${year}년 ${month}월 ${date}일<br>인기 급상승 뉴스 🔥`;
+}
+
+function renderCommunityDate() {
+  const now = new Date();
+  now.setDate(now.getDate() - 1); // 하루 전 날짜
+  const year = now.getFullYear();     // ← 이 줄이 빠졌을 경우 ReferenceError 발생
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  document.getElementById('commDate').textContent = `${year}년 ${month}월 ${date}일`;
+}
+
+renderTodayDate();
+renderCommunityDate();
+
+/* ─── 토론 요약 (전체 문구) ─── */
+const descriptions = {
+ TSLL:`① 가볍게 보기<br>
+택배 부진이 시장 불안감을 키우면서 운영 전략에 대한 의구심도 함께 높였고 현대글로비스 자동화 물류 투자가 눈에 띄면서 대비가 뚜렷했어요.<br><br>
+
+② 하루가 지나면서<br>
+장 시작 전에는 신성장동력 확보 전략 분석을 보며 기대와 불안을 동시에 느꼈고 장 중에는 외국인 매도가 실적 변화 예측 불확실성을 자극했으며 장 마감 후에는 테마주 실망감 속에서 내일 글로벌 경쟁 상황을 주시하게 되었어요.<br><br>
+
+③ 이 기업의 키워드<br>
+투자 심리 : 외국인 매도와 테마주 실망<br>
+시장 환경 : 택배 부진과 물류 자동화 경쟁<br><br>
+
+관련 기업 : 현대글로비스<br>
+`,
+
+ SOXL:`① 가볍게 보기<br>
+위탁생산 수혜로 매수 심리가 높아졌어요, 코스피 전반 상승세 속에서 Nxt의 거래 급증 흐름까지 살펴보는 모습이에요.<br><br>
+
+② 하루가 지나면서<br>
+삼일제약은 장이 시작하기 전 호재 기대와 함께 불안감이 교차했어요, 거래 중에는 프로그램 매수와 외국인 매도가 엇갈리며 변동성이 커졌어요, 장 마감 후에는 긍정적 실적 전망에 대한 기대와 차기 이슈 대기로 마무리했어요.<br><br>
+
+③ 이 기업의 키워드<br>
+투자 심리: 뉴스 기대감<br>
+시장 환경: 코스피 변동성<br><br>
+`,
+
+ TSLA:`① 가볍게 보기<br>
+하이닉스의 어닝서프라이즈에도 시장 변동성이 커서 매도 압력이 강하다고 사람들이 느꼈고 삼성전자 배당정책까지 비교하며 이야기했어요.<br><br>
+
+② 하루가 지나면서<br>
+장 시작 전에는 하이닉스 어닝서프라이즈 기대감과 공매도 불안이 교차했고 장중에는 외국인 매도세에 주가가 흔들리며 투자심리가 위축됐다가 장 마감 후에는 반도체 섹터 지수 반등에 안도하며 내일 미장 지표를 주목했어요.<br><br>
+
+③ 이 기업의 키워드<br>
+투자 심리: 공매도 불안<br>
+시장 환경: 코리아디스카운트<br><br>
+
+관련 기업: 엔비디아<br>
+`,
+
+ SANGJI:`① 가볍게 보기<br>
+현대건설 주가는 투자자들의 기대와 기관매도의 압박이 함께 섞이면서 주변 건설주에 대한 관심을 불러일으켰고 두산에너빌리티의 원전 사업 전망도 눈길을 끌었어요<br><br>
+
+② 하루가 지나면서<br>
+장 시작 전 현대건설 투자자들은 에너지전환 사업 기대와 기관 매도 우려가 교차했지만 장 진행 동안 4만 원 지지 기대 속에 공매도 이슈에도 상승 압박이 이어졌고 장 마감 후 52주 신고가 소식에 추가 상승 기대가 모였어요<br><br>
+
+③ 이 기업의 키워드<br>
+투자 심리: 기대·불안 혼재<br>
+시장 환경: 공매도 이슈<br><br>
+
+관련 기업: 두산에너빌리티<br>
+`,
+
+ NVDA:`① 가볍게 보기<br>
+주가 변동을 가볍게 보면 거래량이 평소보다 확대된 것은 투자자들이 최근 하락을 부담스러워했기 때문이에요, 마무리에는 카카오 플랫폼 성장성 기대를 보여줬어요<br><br>
+
+② 하루가 지나면서<br>
+거래 시작 전엔 투자자들이 배당 기대와 지배구조 우려를 동시에 안고 있었어요, 장중에는 단기 차익 실현 매물이 출회되면서 불안감이 커졌다가 반등을 시도했어요, 마감 후에는 향후 실적 발표 기대를 안고 관망 분위기로 전환했어요<br><br>
+
+③ 이 기업의 키워드<br>
+투자 심리: 배당 기대감과 공매도 불안감<br>
+시장 환경: 유통·소비재 업황 변동성<br><br>
+
+관련 기업: LG생활건강·이마트<br>
+`
+};
+
+/* ─── 관련 리포트 데이터 ─── */
+const reports = {
+  TSLL:[
+    {title:'비용증가가 맞바람을 만날 때', firm:'KB증권 · 강성진,손민영',
+     url:'https://aj-114.github.io/hecto/cj.html'},
+  ],
+  TSLA:[
+    {title:'불확실성 속 분기 증익은 지속될 전망', firm:'DB증권 · 서승연',
+     url:'https://aj-114.github.io/hecto/sk.html'},
+  ]
+  /* SANGJI · NVDA 없음 */
+};
+
+/* ─── 클릭 시 설명 + 링크 출력 ─── */
+function show(key){
+  const desc  = descriptions[key] ?? '요약 데이터가 없습니다.';
+  const list  = reports[key];
+
+  let html = `${desc}
+              <hr style="border:0;border-top:1px solid #333;margin:18px 0">`;
+
+  if (list?.length){
+    html += '<strong>관련 리포트</strong><ul style="margin-top:10px;display:grid;row-gap:6px">';
+    list.forEach(r=>{
+      html += `<li>• <a href="${r.url}" style="color:inherit;text-decoration:none">
+                 ${r.title}</a><span style="color:var(--txt-sub)"> (${r.firm})</span></li>`;
+    });
+    html += '</ul>';
+  }else{
+    html += '<span style="color:var(--txt-sub)">관련 리포트가 없습니다.</span>';
+  }
+
+  document.getElementById('descBox').innerHTML = html;
+}
+</script>
+
+</body>
+</html>

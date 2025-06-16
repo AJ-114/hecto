@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BuzzBit – 뉴스 상세</title>
+
+<style>
+/* ───── 다크 테마 토큰 ───── */
+:root{
+  --bg:#0e0e0e;          /* 전체 배경 */
+  --txt:#f4f4f5;         /* 기본 텍스트 */
+  --txt-sub:#a1a1aa;     /* 서브 텍스트 */
+  --card:#1a1a1a;        /* 카드/본문 배경 */
+  --card-hover:#222;     /* 호버 */
+  --accent:#0ea5e9;      /* 링크 · 포커스 */
+  --border:#27272a;
+  --radius:14px;
+}
+
+/* ───── Reset & Base ───── */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:'Pretendard','Noto Sans KR',sans-serif;
+  line-height:1.7;padding:24px
+}
+h1{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:700;
+   margin-bottom:10px;word-break:keep-all}
+.meta{font-size:.85rem;color:var(--txt-sub);margin-bottom:28px}
+
+p{margin-bottom:18px;word-break:keep-all}
+figure{margin:34px 0;text-align:center}
+figcaption{font-size:.75rem;color:var(--txt-sub);margin-top:8px}
+
+img.responsive{width:100%;max-width:680px;
+  height:auto;border-radius:var(--radius);object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+
+/* ───── 관련 리포트 ───── */
+.report-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:26px;margin-top:48px
+}
+.report-title{font-size:1.05rem;font-weight:700;margin-bottom:18px}
+.report-list{display:grid;row-gap:12px}
+.report-link{
+  display:inline-block;color:var(--txt);text-decoration:none;
+  transition:color .25s;
+}
+.report-link:hover{color:var(--accent)}
+.report-firm{color:var(--txt-sub);font-size:.85rem;margin-left:6px}
+
+/* ───── 반응형 ───── */
+@media(min-width:768px){
+  body{padding:40px}
+}
+
+/* ───── 포커스 상태 ───── */
+a:focus-visible{outline:2px dashed var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<main style="max-width:760px;margin:0 auto">
+
+  <!-- ───── 제목/메타 ───── -->
+  <article>
+    <h1>헥토그룹 '맛깔' 나는 복지 주목..."일할 맛 나네”</h1>
+    <div class="meta">2025.06.17 08:56 · 백봉삼 기자</div>
+
+    <!-- ───── 본문 ───── -->
+    <p>헥토그룹이 직원의 '일할 맛'을 책임지는 기업문화로 주목받고 있다.</p>
+
+    <p>29일 헥토그룹에 따르면, 이 회사는 하루 세끼 무료 식사 제공을 비롯해 사내 카페 운영, 프리미엄 건강기능식품 지원, 사내 커뮤니케이션 프로그램까지 다방면 복지 체계를 갖췄다. 이를 통해 구성원의 일상에 직접적인 변화를 만들어가고 있다. 특히 최근에는 KBS 2TV '생생정보'에 헥토그룹 구내식당 '채움'이 소개되며, 외식 수준의 식사 복지를 운영하는 사례로 주목받았다.</p>
+
+    <p>헥토그룹은 임직원들에게 구내식당 채움을 통해 점심은 물론 아침, 저녁까지 삼시세끼를 무료로 제공하고 있다. 아침은 편안한 한 끼 식사는 물론 김밥, 시리얼 등 간편식 픽업도 가능하다. 랍스터, 살치살 스테이크, 포케 등의 특식메뉴가 정기적으로 제공되고 있으며, '광화문 국밥', '하동관 곰탕', '오복수산 카이센동' 등 미쉐린 가이드에 선정된 인기 맛집과 협업한 특별 메뉴도 구성돼 직원들이 회사 안에서 미식 경험을 누릴 수 있도록 하고 있다.</p>
+
+    <p>이 외에도 헥토그룹은 매월 프리미엄 프로바이오틱스 '드시모네' 또는 '오투부스터'를 전 그룹사 직원에게 지급하고 있다. 또 걷기 참여를 통해 복지 포인트를 적립할 수 있는 제도를 운영하며 일상 속 건강 관리를 독려하고 있다. 적립된 포인트는 사내 카페에서 사용할 수 있으며, 커피 한 잔이 500~1,000원 수준으로 제공돼 일상적인 만족도를 높인다. 카페 내부에는 소규모 미팅이 가능한 자유로운 공간도 마련되어 있어, 휴식과 업무가 조화를 이루는 환경을 제공한다.</p>
+
+    <p>조직 내 교류와 유연한 업무 협업을 위한 프로그램도 운영 중이다. '메이크프렌즈'는 부서 및 계열사를 넘나드는 임직원 간의 자연스러운 소통을 목적으로 만들어진 사내 프로그램으로, 구성원들이 팀을 이뤄 식사를 함께 하면서 친목을 쌓고 회사에 대한 이해도를 높이는 시간으로 운영되고 있다. 도입 이후 현재까지 약 60회 이상 진행되었으며, 높은 만족도에 따라 점차 확대될 예정이다.</p>
+  </article>
+
+  <!-- ───── 관련 리포트 ───── -->
+  <section class="report-box">
+    <h2 class="report-title">관련 리포트</h2>
+    <ul class="report-list">
+      <li><a href="https://aj-114.github.io/hecto/hecto.html"  class="report-link">드디어 멈춘 외국인 매도세<span class="report-firm"> (유안타증권 · 권명준)</span></a></li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>
